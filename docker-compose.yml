@@ -1,8 +1,12 @@
 services:
-  expo-dev:
-    build:
-      dockerfile: ./Dockerfile
+  client: 
+   build:
+    dockerfile: .devcontainer/Dockerfile
     volumes:
       - code:/root/workspace
+    ports:
+      - "19006:19006"
+      - "19001:19001"
+      - "19002:19002"
 volumes:
   code: {}
