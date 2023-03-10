@@ -1,32 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
 
-const PlaceholderImage = require("./assets/background-image.png");
+import { PressableText } from "./src/interface/Nav";
 
-export default function App() {
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "tomato",
+    secondary: "yellow"
+  }
+};
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image source={PlaceholderImage} style={styles.image} />
+    <PaperProvider theme={theme}>
+      <View style={style.container}>
+        <PressableText/>
       </View>
-      <StatusBar style="auto" />
-    </View>
+    </PaperProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#25292e',
-    alignItems: 'center',
-  },
-  imageContainer: {
-    flex: 1,
-    paddingTop: 58
-  },
-  image: {
-    width: 320,
-    height: 440,
-    borderRadius: 18
-  }
-});
+export default App;
