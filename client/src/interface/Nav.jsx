@@ -1,11 +1,20 @@
-import {Text, Button, Alert} from "react-native";
+import { Appbar } from "react-native-paper";
 
-export const PressableText = props => {
+
+export const NavBar = () => {
+    const _goBack = () => console.log("Went back");
+
+    const _handleSearch = () => console.log("Searching");
+
+    const _handleMore = () => console.log("Shown more");
+
     return (
-        <Button
-            onPress={() => Alert.alert("You pressed the text!", "Perseen suti")}
-            title={"Paska"}>
-                <Text>You can press me</Text>
-            </Button>
+        <Appbar.Header>
+            <Appbar.BackAction onPress={_goBack} />
+            <Appbar.Content title="Title" />
+            <Appbar.Action icon="magnify" onPress={_handleSearch} />
+            <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
+        </Appbar.Header>
     );
-}
+};
+

@@ -1,23 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { Provider as PaperProvider } from 'react-native-paper';
+import "react-native-gesture-handler";
+import { Provider as PaperProvider, MD3DarkTheme as DefaultTheme } from 'react-native-paper';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from "@react-navigation/stack";
 
-import { PressableText } from "./src/interface/Nav";
-
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: "tomato",
-    secondary: "yellow"
-  }
-};
+import { Main } from "./src/interface/Main";
 
 const App = () => {
   return (
-    <PaperProvider theme={theme}>
-      <View style={style.container}>
-        <PressableText/>
-      </View>
+    <PaperProvider>
+      <Main/>
     </PaperProvider>
   );
 }
