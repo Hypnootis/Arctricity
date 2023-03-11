@@ -1,19 +1,28 @@
-import { Appbar } from "react-native-paper";
+import { Appbar, Menu } from "react-native-paper";
+import React from "react";
 
 
-export const NavBar = () => {
-    const _goBack = () => console.log("Went back");
-
-    const _handleSearch = () => console.log("Searching");
-
-    const _handleMore = () => console.log("Shown more");
+export const NavBar = ({navigation, back}) => {
+    const [visible, setVisible] = React.useState(false);
+    const openMenu = () => setVisible(true);
+    const closeMenu = () => setVisible(false);
 
     return (
         <Appbar.Header>
-            <Appbar.BackAction onPress={_goBack} />
-            <Appbar.Content title="Title" />
-            <Appbar.Action icon="magnify" onPress={_handleSearch} />
-            <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
+            {back ? <Appbar.BackAction onPress={navigation.goBack}/> : null}
+            <Appbar.Content title="Awesome app" />
+            {!back ? (
+                <Menu
+                    visible={visible}
+                    onDismiss={closeMenu}
+                    anchor={
+                        <Appbar.Action icon="menu" color="white" onPress={openMenu} />
+                    }>
+                        <Menu.Item onPress={() => {console.log("Option 1 was pressed")}} title="Option 1" />
+                        <Menu.Item onPress={() => {console.log("Option 2 was pressed")}} title="Option 2" />
+                        <Menu.Item onPress={() => {console.log("Option 3 was pressed")}} title="Option 3" disabled/>
+                    </Menu>
+            ) : null}
         </Appbar.Header>
     );
 };
