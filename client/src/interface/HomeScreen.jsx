@@ -2,54 +2,37 @@ import React from "react";
 import {View, Text, Button, StyleSheet } from "react-native";
 
 import { MyData } from "./Data";
-import { style } from "./MyTheme";
-import { Kuvat } from "./Kuvat";
+import { styling } from "./MyTheme";
+import { Graphs } from "./Graphs";
 
 
 export const HomeScreen = ({navigation}) => {
     return (
-        <View style={style.container}>
+        <View style={styling.buttons}>
             <Button
-                style={style.buttons}
-                title="Rotat"
-                onPress={() => navigation.navigate("Rotat")}
+                title="Data table screen"
+                onPress={() => navigation.navigate("Table")}
                 />
             <Button 
-                style={style.buttons}
-                title="Kuvat"
-                onPress={() => navigation.navigate("Kuvat")}
+                title="Graphs screen"
+                onPress={() => navigation.navigate("Graphs")}
             />
         </View>
     );
 }
 
-export const DetailsScreen = () => {
+export const TableScreen = () => {
     return (
-        <View style={style.container}>
+        <View style={styling.container}>
            <MyData/> 
         </View>
     );
 }
 
-export const InfoScreen = () => {
+export const GraphsScreen = () => {
     return (
-        <View style={style.container}>
-            <Kuvat />
+        <View style={styling.cards}>
+            <Graphs />
         </View>
     );
 }
-
-const paska = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-    }
-});
-    /*
-    // TODO: Set datatable text color to black
-    table: {
-        text: "black"
-    }
-});
-*/

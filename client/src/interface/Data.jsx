@@ -1,6 +1,9 @@
 import * as React from "react";
 import { DataTable } from "react-native-paper";
 
+import { styling } from "./MyTheme";
+
+
 const optionsPerPage = [2, 3, 4];
 
 export const MyData = () => {
@@ -11,27 +14,27 @@ export const MyData = () => {
     }, [itemsPerPage]);
 
     return (
-        <DataTable theme={{ text:"#0000ff" }}>
+        <DataTable style={styling.table}>
             <DataTable.Header>
-                <DataTable.Title>Nimi</DataTable.Title>
-                <DataTable.Title numeric>Paino (g)</DataTable.Title>
-                <DataTable.Title numeric>Pyppyfeis</DataTable.Title>
+                <DataTable.Title>Name</DataTable.Title>
+                <DataTable.Title numeric>Weight (g)</DataTable.Title>
+                <DataTable.Title numeric>Likes cheese</DataTable.Title>
             </DataTable.Header>
 
             <DataTable.Row>
                 <DataTable.Cell>Muice</DataTable.Cell>
                 <DataTable.Cell numeric>580</DataTable.Cell>
-                <DataTable.Cell numeric>Kyllä</DataTable.Cell>
+                <DataTable.Cell numeric>Yes</DataTable.Cell>
             </DataTable.Row>
             <DataTable.Row>
                 <DataTable.Cell>Mope</DataTable.Cell>
                 <DataTable.Cell numeric>550</DataTable.Cell>
-                <DataTable.Cell numeric>Kyllä</DataTable.Cell>
+                <DataTable.Cell numeric>Yes</DataTable.Cell>
             </DataTable.Row>
              <DataTable.Row>
                 <DataTable.Cell>Mesa</DataTable.Cell>
                 <DataTable.Cell numeric>490</DataTable.Cell>
-                <DataTable.Cell numeric>Ei</DataTable.Cell>
+                <DataTable.Cell numeric>Yes</DataTable.Cell>
             </DataTable.Row>
         
             <DataTable.Pagination

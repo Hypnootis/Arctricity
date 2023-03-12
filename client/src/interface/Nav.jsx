@@ -10,7 +10,7 @@ export const NavBar = ({navigation, back}) => {
     return (
         <Appbar.Header>
             {back ? <Appbar.BackAction onPress={navigation.goBack}/> : null}
-            <Appbar.Content title="Kodin tärkeitä tietoja" />
+            <Appbar.Content title="Arctricity" />
             {!back ? (
                 <Menu
                     visible={visible}

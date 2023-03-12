@@ -1,20 +1,24 @@
 import { MD3DarkTheme } from "react-native-paper";
 
-export const style = {
+export const Theme = {
     ...MD3DarkTheme,
     colors: {
         ...MD3DarkTheme.colors
+    }
+}
+
+export const styling = {
+    container: {
+        height: "100%", 
     },
     cards: {
-        padding: 20,
+        alignItems: "center",
     },
     buttons: {
-        flex: 1,
-        margin: 20,
-    },
-    container: {
-        justifyContent: "center",
+        height: "100%",
+        justifyContent: "space-around",
         alignItems: "center"
+    },
+    table: {
     }
-
 }

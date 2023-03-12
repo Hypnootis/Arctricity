@@ -1,7 +1,7 @@
 import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 
 import { Main } from "./src/interface/Main";
-import { style } from './src/interface/MyTheme';
+import { Theme } from './src/interface/MyTheme';
 
 const theme = {
   ...DefaultTheme,
@@ -13,7 +13,7 @@ const theme = {
 
 const App = () => {
   return (
-    <PaperProvider theme={style}>
+    <PaperProvider theme={Theme}>
       <Main/>
     </PaperProvider>
   );

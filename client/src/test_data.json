@@ -1,3 +1,31 @@
 {
-    
+   "2023_01_19_185851": {
+        "HP_compressor_on_off": 0,
+        "alarm_0": 0,
+        "alarm_1": 0,
+        "alarm_2": 0,
+        "alarm_3": 0,
+        "alarm_4": 0,
+        "alarm_5": 0,
+        "alarm_6": 0,
+        "alarm_7": 0,
+        "electricheater_lower_on_off": 0,
+        "electricheater_upper_on_off": 1,
+        "temp_HP_high_limit": 380,
+        "temp_HP_low_limit": 330,
+        "temp_HPcondensation": 366,
+        "temp_HPgas_hot": 427,
+        "temp_HPgas_suction": -432,
+        "temp_floofheating_out": 268,
+        "temp_floorheating_OUT_target": 269,
+        "temp_floorheating_in": 253,
+        "temp_groundwater_in": 65,
+        "temp_groundwater_out": 52,
+        "temp_hotwater": 349,
+        "temp_in_not_connected": -439,
+        "temp_out: row[1]": -20,
+        "temp_watertank_lower": 367,
+        "temp_watertank_upper": 456,
+        "time": "Mon Jan 19 2023 18:58:51 GMT+0200 (GMT+02:00)"
+   } 
 }
