@@ -2,15 +2,23 @@ import React from "react";
 import {View, Text, Button, StyleSheet } from "react-native";
 
 import { MyData } from "./Data";
+import { style } from "./MyTheme";
+import { Kuvat } from "./Kuvat";
+
 
 export const HomeScreen = ({navigation}) => {
     return (
         <View style={style.container}>
-            <Text>Pissi</Text>
             <Button
-                title="Pyppy"
-                onPress={() => navigation.navigate("Details")}
+                style={style.buttons}
+                title="Rotat"
+                onPress={() => navigation.navigate("Rotat")}
                 />
+            <Button 
+                style={style.buttons}
+                title="Kuvat"
+                onPress={() => navigation.navigate("Kuvat")}
+            />
         </View>
     );
 }
@@ -18,20 +26,30 @@ export const HomeScreen = ({navigation}) => {
 export const DetailsScreen = () => {
     return (
         <View style={style.container}>
-           <MyData style={style.table}/> 
+           <MyData/> 
         </View>
     );
 }
 
-const style = StyleSheet.create({
+export const InfoScreen = () => {
+    return (
+        <View style={style.container}>
+            <Kuvat />
+        </View>
+    );
+}
+
+const paska = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "gray"
-    },
+    }
+});
+    /*
     // TODO: Set datatable text color to black
     table: {
         text: "black"
     }
 });
+*/
