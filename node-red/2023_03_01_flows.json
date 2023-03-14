@@ -1,0 +1,159 @@
+[
+    {
+        "id": "7cf83ff599193c2b",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b27989c549c7e96a",
+        "type": "inject",
+        "z": "7cf83ff599193c2b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "36000",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "044b7ac26972850f"
+            ]
+        ]
+    },
+    {
+        "id": "044b7ac26972850f",
+        "type": "file in",
+        "z": "7cf83ff599193c2b",
+        "name": "Ekowell.data",
+        "filename": "C:\\Users\\tomco\\OneDrive\\Desktop\\Various Things\\Engineering Study\\Semester Spring 2023\\Spring Project 2\\Kickoff\\Ekowell.data",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 290,
+        "y": 100,
+        "wires": [
+            [
+                "3f6e79a63879bdfa"
+            ]
+        ]
+    },
+    {
+        "id": "9971d210eb82e368",
+        "type": "csv",
+        "z": "7cf83ff599193c2b",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "time, temp_out: row[1], temp_in_not_connected, temp_watertank_lower, temp_watertank_upper, temp_floofheating_out, temp_floorheating_in, temp_HPcondensation, temp_HPgas_suction, temp_groundwater_out, temp_groundwater_in, temp_HPgas_hot, temp_hotwater, HP_compressor_on_off, electricheater_upper_on_off, electricheater_lower_on_off, temp_floorheating_OUT_target, temp_HP_low_limit, temp_HP_high_limit, alarm_0, alarm_1, alarm_2, alarm_3, alarm_4, alarm_5, alarm_6, alarm_7",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 570,
+        "y": 100,
+        "wires": [
+            [
+                "bf8d118bfaf6bbbd"
+            ]
+        ]
+    },
+    {
+        "id": "bf8d118bfaf6bbbd",
+        "type": "function",
+        "z": "7cf83ff599193c2b",
+        "name": "function 2",
+        "func": "var timestamp = msg.payload.time;\n\nvar monthMap = {\n    \"Jan\": \"01\",\n    \"Feb\": \"02\",\n    \"Mar\": \"03\",\n    \"Apr\": \"04\",\n    \"May\": \"05\",\n    \"Jun\": \"06\",\n    \"Jul\": \"07\",\n    \"Aug\": \"08\",\n    \"Sep\": \"09\",\n    \"Oct\": \"10\",\n    \"Nov\": \"11\",\n    \"Dec\": \"12\"\n};\n\nvar year = timestamp.substr(11, 4);\nvar month = timestamp.substr(4, 3);\nmonth = month.replace(/(\\w{3})/, function (match, p1) {\n    return monthMap[p1];\n});\nvar day = timestamp.substr(8, 2);\nvar time = timestamp.substr(16, 8);\nvar formattedTimestamp = year + '_' + month + '_' + day + '_' + time.replace(/:/g, '');\nmsg.timestamp = formattedTimestamp;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 100,
+        "wires": [
+            [
+                "aaf82d8a928adc61",
+                "5fe6bd5d2f60eaa4"
+            ]
+        ]
+    },
+    {
+        "id": "aaf82d8a928adc61",
+        "type": "debug",
+        "z": "7cf83ff599193c2b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "5fe6bd5d2f60eaa4",
+        "type": "Firestore out",
+        "z": "7cf83ff599193c2b",
+        "name": "",
+        "collection": "Data",
+        "document": "{{timestamp}}",
+        "operation": "set",
+        "admin": "502f4a215e501af5",
+        "eject": false,
+        "x": 880,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3f6e79a63879bdfa",
+        "type": "function",
+        "z": "7cf83ff599193c2b",
+        "name": "function 1",
+        "func": "let rows = msg.payload.toString().split('\\n')\nlet lastRow = rows[rows.length -1];\nmsg.payload = lastRow;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 100,
+        "wires": [
+            [
+                "9971d210eb82e368"
+            ]
+        ]
+    },
+    {
+        "id": "502f4a215e501af5",
+        "type": "firebase admin",
+        "name": "springproject2"
+    }
+]
