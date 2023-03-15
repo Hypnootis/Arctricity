@@ -31,6 +31,8 @@ Node package execute, it can be used to run scripts in remote or locally install
 A Javascript library for building user interfaces with a component based system. [(more information)](https://reactjs.org/docs/getting-started.html)
 ### React-native
 Cross-platform library for building applications, based on and very similar to React. Can be compiled to Android, iOS and web. [(more information)](https://reactnative.dev/docs/getting-started)
+
+It uses [flex-box](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) for styling, but note that the [syntax](https://reactnative.dev/docs/0.70/flexbox) differs slightly.
 ### Expo
 Third-party development environment for React-native. Provides live refresh when changing the code, ability to test your app via a mobile app in real time and various other convenient features that a developer might want. [(more information)](https://docs.expo.dev/)
 ### React-native paper
