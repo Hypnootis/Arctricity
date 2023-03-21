@@ -15,10 +15,19 @@ export const styling = {
         alignItems: "center",
     },
     buttons: {
-        height: "100%",
-        justifyContent: "space-around",
-        alignItems: "center"
+        height: "100%"
     },
-    table: {
+    buttonsContainer: {
+        height: "100%",
+        width: "50%",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+    },
+    mainContainer: {
+        flexDirection: "row",
+        height: "100%",
+    },
+    button1: {
+    backgroundColor: "red"
     }
 }

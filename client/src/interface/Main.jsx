@@ -5,17 +5,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { Theme } from "./MyTheme";
-import { HomeScreen, GraphsScreen, TableScreen } from "./HomeScreen";
+import { HomeScreen } from "./HomeScreen";
 import { NavBar } from "./Nav";
+import { Graphs } from "./Graphs";
+import { MyData } from "./Data";
 
 const Stack = createStackNavigator();
-
-const styles = StyleSheet.create({
-    container: { 
-        alignItems: "center",
-        justifyContent: "center"
-    }
-});
 
 export const Main = () => {
     return (
@@ -26,8 +21,8 @@ export const Main = () => {
                     header: (props) => <NavBar {...props}/>
                 }}>
                 <Stack.Screen name="Home" component={HomeScreen}/>
-                <Stack.Screen name="Table" component={TableScreen}/>
-                <Stack.Screen name="Graphs" component={GraphsScreen} />
+                <Stack.Screen name="Table" component={MyData}/>
+                <Stack.Screen name="Graphs" component={Graphs} />
             </Stack.Navigator>
         </NavigationContainer>
     );
