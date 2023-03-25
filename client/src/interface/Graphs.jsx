@@ -9,7 +9,7 @@ export const Graphs = () => {
         <View>
             <Card>
                 <Card.Content style={styling.cards}>
-                    <Title>This could have a cool graph</Title>
+                    <Title>Suck my nuts</Title>
                     <Paragraph>Mesa</Paragraph>
                 </Card.Content>
                 <Card.Cover source={require("../../assets/mesa.jpeg")} />
