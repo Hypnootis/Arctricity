@@ -1,7 +1,6 @@
 import { Appbar, Menu } from "react-native-paper";
 import React from "react";
 
-
 export const NavBar = ({navigation, back}) => {
     const [visible, setVisible] = React.useState(false);
     const openMenu = () => setVisible(true);
@@ -26,4 +25,6 @@ export const NavBar = ({navigation, back}) => {
         </Appbar.Header>
     );
 };
+
+
 

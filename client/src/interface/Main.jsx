@@ -5,10 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { Theme } from "./MyTheme";
-import { HomeScreen } from "./HomeScreen";
+import { HomeScreen, GraphsScreen, DiagnosticsScreen, TableScreen } from "./HomeScreen";
 import { NavBar } from "./Nav";
-import { Graphs } from "./Graphs";
-import { MyData } from "./Data";
 
 const Stack = createStackNavigator();
 
@@ -21,8 +19,9 @@ export const Main = () => {
                     header: (props) => <NavBar {...props}/>
                 }}>
                 <Stack.Screen name="Home" component={HomeScreen}/>
-                <Stack.Screen name="Table" component={MyData}/>
-                <Stack.Screen name="Graphs" component={Graphs} />
+                <Stack.Screen name="Table" component={TableScreen}/>
+                <Stack.Screen name="Diagnostics" component={DiagnosticsScreen} />
+                <Stack.Screen name="Graphs" component={GraphsScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
