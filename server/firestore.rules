@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+    // Added comment so I can update these dumb rules
+      allow read, write: if true;
+    }
+  }
+}

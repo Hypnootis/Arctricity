@@ -24,13 +24,11 @@ if (docSnap.exists()) {
 }
 
 */
-// TODO: Create function to query for a specified time range
-let timeframe = "Sat Apr 01 2023 17:"; // Query string
 
 const docsRef = collection(db, "Data");
  // Time-range query
-const q = query(docsRef, where("time", ">=", timeframe),
-    where("time", "<=", timeframe + '\uf8ff'), limit(9));
+const q = query(docsRef, where("time", ">=", "Tue Mar 28 2023 14:55"),
+    where("time", "<=", "Tue Mar 28 2023 14:55" + '\uf8ff'), limit(9));
 
 const querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
