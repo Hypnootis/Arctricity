@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, getDocs, getDoc, getDocFromServer, collection, query, where, limit, doc } from "firebase/firestore";
+import * as fs from "fs";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDGnSle1ZEp6p-qp74ksFFYzGfh9g_Ouzo",
@@ -25,7 +26,7 @@ if (docSnap.exists()) {
 
 */
 // TODO: Create function to query for a specified time range
-let timeframe = "Apr 01 2023 17:"; // Query string
+// let timeframe = "2023_04_14_1"; // Query string
 
 /*
 function weekdayName(day, month) {
@@ -40,7 +41,7 @@ function formatTime(day, month, hour) {
 */
 
 //console.log(formatTime(1, 4, 12));
-
+/*
 async function getDocument(db, id) {
     const snap = await getDocFromServer(doc(db, "Data", id));
     if (snap.exists()) {
@@ -50,20 +51,23 @@ async function getDocument(db, id) {
     }
 }
 getDocument(db, "2023_04_12_18" + '\uf8ff');
+*/
 
+let timeframe = "2023_04_14_1"; 
 
-/*
-
-const docsRef = collection(db, "Data");
+const docsRef = collection(db, "data_history");
  // Time-range query
-const q = query(docsRef, where("time", ">=", timeframe),
-    where("time", "<=", timeframe + '\uf8ff'), limit(9));
+const q = query(docsRef, where("timestamp", ">=", timeframe),
+    where("timestamp", "<=", timeframe + '\uf8ff'), limit(10));
 
 const querySnapshot = await getDocs(q);
-querySnapshot.forEach((doc) => {
+querySnapshot.forEach((doc, i) => {
     console.log(doc.id, " => ", doc.data());
+    i++;
+    console.log("HENOOO !!!!!!!!!" + i);
+    //fs.writeFileSync("testData${i}.json", JSON.stringify(doc.data()));
 });
-/*
+
 // Single doc query
 /*
 const q = query(docsRef, where("time", "==", "Wed Mar 01 2023 12:09:47 GMT+0200 (GMT+02:00)"), limit(1));
