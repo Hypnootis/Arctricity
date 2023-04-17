@@ -4,8 +4,14 @@ import { View, Text, Dimensions, ScrollView } from "react-native";
 import { styling } from "./MyTheme";
 import { BarChart, LineChart } from "react-native-chart-kit";
 
-const data_file= require('./test_data.json');
-const data = data_file.test;
+const data_file = require('../data_files/test_data.json');
+
+let outside_temps = [];
+
+for (data in data_file) {
+  outside_temps.push(data_file[data].avgValues.temp_out);
+}
+
 
 export const Graphs = () => {
     return (
@@ -14,33 +20,28 @@ export const Graphs = () => {
             <Text style={{ color: 'white', fontSize: 20, textAlign: 'center' }}>Status as of:{'\n'}{data.time}</Text>
             <Card>
                 <Card.Content style={styling.cards}>
-                    <Title>This could have a cool graph</Title>
+                    <Title>Outside temperature</Title>
                     <LineChart
     data={{
-      labels: ["January", "February", "March", "April", "May", "June"],
+      labels: ["14:50", "15:00", "15:10", "15:20", "15:30", "15:40"],
       datasets: [
         {
           data: [
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100
+            ...outside_temps
           ]
         }
       ]
     }}
     width={Dimensions.get("window").width} // from react-native
     height={220}
-    yAxisLabel="$"
-    yAxisSuffix="k"
     yAxisInterval={1} // optional, defaults to 1
+    yAxisSuffix="°C"
+    fromZero="true"
     chartConfig={{
-      backgroundColor: "#e26a00",
-      backgroundGradientFrom: "#fb8c00",
-      backgroundGradientTo: "#ffa726",
-      decimalPlaces: 2, // optional, defaults to 2dp
+      backgroundColor: "#333134",
+      backgroundGradientFrom: "#2b0871",
+      backgroundGradientTo: "#160438",
+      decimalPlaces: 1, // optional, defaults to 2dp
       color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
       labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
       style: {

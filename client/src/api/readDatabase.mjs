@@ -58,14 +58,13 @@ let timeframe = "2023_04_14_1";
 const docsRef = collection(db, "data_history");
  // Time-range query
 const q = query(docsRef, where("timestamp", ">=", timeframe),
-    where("timestamp", "<=", timeframe + '\uf8ff'), limit(10));
+    where("timestamp", "<=", timeframe + '\uf8ff'), limit(1));
 
 const querySnapshot = await getDocs(q);
-querySnapshot.forEach((doc, i) => {
-    console.log(doc.id, " => ", doc.data());
-    i++;
-    console.log("HENOOO !!!!!!!!!" + i);
-    //fs.writeFileSync("testData${i}.json", JSON.stringify(doc.data()));
+querySnapshot.forEach((doc) => {
+    let day = 0;
+    console.log(doc.id, ":", doc.data());
+    fs.writeFileSync("testData" + day + ".json", JSON.stringify(doc.data()));
 });
 
 // Single doc query

@@ -4,7 +4,7 @@ import { DataTable } from "react-native-paper";
 import { styling } from "./MyTheme";
 //import firebase from 'firebase/app';
 //import 'firebase/firestore';
-
+/*
 const data_file= require('./test_data.json');
 const data = data_file.test;
 
@@ -35,7 +35,7 @@ docRef.get().then((doc) => {
 });
 */
 
-
+/*
 function binaryToString(value) {
   if (value === 0) {
     return "Off";
@@ -64,7 +64,8 @@ for (const [key, value] of Object.entries(data)) {
     results[key] = result;
   }
 }
-
+*/
+/*
 const optionsPerPage = [2, 3, 4];
 export const Diagnostics = () => {
     const [page, setPage] = React.useState(0);
@@ -137,3 +138,4 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 });
+*/

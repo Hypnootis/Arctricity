@@ -6,8 +6,8 @@ import { styling } from "./MyTheme";
 // import firebase from 'firebase/app';
 // import 'firebase/firestore';
 
-const data_file= require('./test_data.json');
-const data = data_file.test;
+const data_file= require('../test_data.json');
+// const data = data_file.test;
 
 // Initialize Firebase (For future use, couldn't get this part to work yet)
 /*const firebaseConfig = {
@@ -35,7 +35,7 @@ docRef.get().then((doc) => {
   console.log("Error getting document:", error);
 });*/
 
-
+/*
 function temperatureConversion(value) {
   decimal_value = value / 10;
   const num = parseFloat(decimal_value);
@@ -155,3 +155,4 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 });
+*/
