@@ -10,6 +10,9 @@ export const Theme = {
 export const styling = {
     container: {
         height: "100%", 
+        width: "90%",
+        alignItems: "center",
+        justifyContent: "space-evenly"
     },
     cards: {
         alignItems: "center",
@@ -19,6 +22,21 @@ export const styling = {
         justifyContent: "space-around",
         alignItems: "center"
     },
-    table: {
+    headerText: {
+        alignItems: "center",
+        color: "white",
+        fontSize: 30
+    },
+    innerContainer: {
+        justifyContent: "space-around",
+        alignContent: "center",
+        alignItems: "center",
+        height: "auto",
+        gap: 15,
+        flexGrow: 2,
+        flexDirection: "row"
+    },
+    headerContainer: {
+        flexGrow: 1
     }
 }

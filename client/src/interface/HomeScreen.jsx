@@ -1,52 +1,86 @@
-import React from "react";
-import {View, Text, Button, StyleSheet } from "react-native";
+import { React, useState, useEffect } from "react";
+import {View, Text, Button, StyleSheet, ImageBackground, Dimensions } from "react-native";
 
-import { MyData } from "./Data";
-import { Diagnostics } from "./Diagnostics";
+import { Settings } from "./Settings";
 import { styling } from "./MyTheme";
-import { Graphs } from "./Graphs";
+import { Temps } from "./Temps";
+import { Energy } from "./Energy";
+import { Forecast } from "./Forecast";
 
+export const HomeScreen = ({ navigation }) => {
 
-export const HomeScreen = ({navigation}) => {
+    const [timeState, setTimeState] = useState("Spring"); // true = recent, false = winter
+
+    function handleTimeState(){
+        if (timeState === "Spring") {
+            setTimeState("Winter");
+        } else {
+            setTimeState("Spring");
+        }
+    };
+
     return (
-        <View style={styling.buttons}>
+        <View style={styling.container}>
+            <View style={styling.headerContainer}>
+            <Text style={styling.headerText}>Dataset selected: {timeState}</Text>
+            <Button 
+                title="Toggle dataset for demo"
+                onPress={() => handleTimeState()}
+                style={styling.buttons}
+            />
+            </View>
+            <View style={styling.innerContainer}>
             <Button
-                title="Temperature data"
-                onPress={() => navigation.navigate("Table")}
+                title="Temperatures"
+                onPress={() => navigation.navigate("Temps", {timeState: timeState})}
                 />
             <Button 
-                title="Diagnostics"
-                onPress={() => navigation.navigate("Diagnostics")}
+                title="Energy consumption"
+                onPress={() => navigation.navigate("Energy", {timeState: timeState})}
+            />
+            </View>
+            <View style={styling.innerContainer}>
+            <Button 
+                title="Forecast"
+                onPress={() => navigation.navigate("Forecast", {timeState: timeState })}
             />
             <Button 
-                title="Graphs"
-                onPress={() => navigation.navigate("Graphs")}
+                title="Settings"
+                onPress={() => navigation.navigate("Settings", {timeState: timeState})}
             />
-
+            </View>
         </View>
     );
 }
 
-export const TableScreen = () => {
+export const SettingsScreen = () => {
     return (
         <View style={styling.container}>
-           <MyData/> 
+           <Settings /> 
         </View>
     );
 }
 
-export const DiagnosticsScreen = () => {
+export const EnergyScreen = ({ route }) => {
     return (
         <View style={styling.container}>
-            <Diagnostics />
+            <Energy timeState={route.params.timeState}/>
         </View>
     );
 }
 
-export const GraphsScreen = () => {
+export const TempsScreen = ({ route }) => {
     return (
         <View style={styling.cards}>
-            <Graphs />
+            <Temps timeState={route.params.timeState}/>
+        </View>
+    );
+}
+
+export const ForecastScreen = ({ route }) => {
+    return (
+        <View style={styling.container}>
+            <Forecast timeState={route.params.timeState} />
         </View>
     );
 }
