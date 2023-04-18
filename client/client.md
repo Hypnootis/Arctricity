@@ -13,6 +13,11 @@ Then run expo:
 npx expo start
 ```
 
+If you want to export the app to APK, run:
+```bash
+eas build -p android --profile preview
+```
+
 All the dependencies necessary should be in package.json, so just do npm install
 the first time before starting up, after that it's unnecessary.
 
