@@ -56,15 +56,37 @@ getDocument(db, "2023_04_12_18" + '\uf8ff');
 let timeframe = "Thu Mar 02 2023 23:"; 
 
 const docsRef = collection(db, "Data");
+
+/*
+function get(query) {
+    return new Promise((resolve, reject) => {
+        query(docsRef, where("time", ">=", timeframe), where("time", "<=", timeframe + '\uf8ff'), limit(1))
+        .then(data => resolve(data))
+        .catch(err => reject(err));
+    });
+}
+*/
+
  // Time-range query
 const q = query(docsRef, where("time", ">=", timeframe),
     where("time", "<=", timeframe + '\uf8ff'), limit(1));
-
-const querySnapshot = await getDocs(q);
-querySnapshot.forEach((doc) => {
-    console.log(doc.id, ":", doc.data());
-    fs.appendFileSync("testData0.json", "\"" + doc.id + "\": "+ JSON.stringify(doc.data()) + ",");
+/*
+const querySnapshot = await getDocs(q).then((data) => {
+    return data;
 });
+*/
+
+function get(query) {
+    return new Promise((resolve, reject) => {
+        getDocs(q)
+        .then(data => resolve(data))
+        .catch(err => reject(err));
+    });
+}
+
+console.log(await get(q));
+
+        // fs.appendFileSync("testData0.json", "\"" + doc.id + "\"" + ":" + JSON.stringify(doc.data()) + ",");
 
 // Single doc query
 /*
