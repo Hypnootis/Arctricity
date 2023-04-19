@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import {View, Text, Button, StyleSheet, ImageBackground, Dimensions } from "react-native";
 
-import { Settings } from "./Settings";
+import { About } from "./About";
 import { styling } from "./MyTheme";
 import { Temps } from "./Temps";
 import { Energy } from "./Energy";
@@ -45,25 +45,25 @@ export const HomeScreen = ({ navigation }) => {
                 onPress={() => navigation.navigate("Forecast", {timeState: timeState })}
             />
             <Button 
-                title="Settings"
-                onPress={() => navigation.navigate("Settings", {timeState: timeState})}
+                title="About"
+                onPress={() => navigation.navigate("About", {timeState: timeState})}
             />
             </View>
         </View>
     );
 }
 
-export const SettingsScreen = () => {
+export const AboutScreen = () => {
     return (
         <View style={styling.container}>
-           <Settings /> 
+           <About /> 
         </View>
     );
 }
 
 export const EnergyScreen = ({ route }) => {
     return (
-        <View style={styling.container}>
+        <View style={styling.cards}>
             <Energy timeState={route.params.timeState}/>
         </View>
     );

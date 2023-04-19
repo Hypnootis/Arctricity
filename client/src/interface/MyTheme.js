@@ -38,5 +38,10 @@ export const styling = {
     },
     headerContainer: {
         flexGrow: 1
+    },
+    snippet: {
+        backgroundColor: "gray",
+        marginTop: 3,
+        padding: 2
     }
 }

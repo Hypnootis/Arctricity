@@ -13,7 +13,7 @@ const hours = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09",
 let spring_energy = [];
 
 for (data in spring) {
-  spring_energy.push(spring[data].total_consumption / 1000 * 1);
+  spring_energy.push(spring[data].total_consumption / 1000);
 }
 
 let currentHours = [...hours.filter((value, index) => {
@@ -26,7 +26,7 @@ export const Energy = (props) => {
     let interval = 3;
 
     if (props.timeState === "Spring") {
-      temps_out = [...spring_energy];
+      consumption = [...spring_energy];
       date = "April 16th 2023";
     } else {
       date = "March 2nd 2023"
@@ -84,21 +84,13 @@ export const Energy = (props) => {
         {
           data: [...consumption],
         },
-        {
-          data: [0], // min value for chart
-          withDots: false
-        },
-        {
-          data: [10000], // max value for chart
-          withDots: false
-        }
       ],
-      legend: ["Outside temperature (°C)"]
+      legend: ["Total energy consumption for the day (kw/h)"]
     }}
     width={Dimensions.get("window").width} // from react-native
     height={Dimensions.get("window").height / 2}
     yAxisInterval={interval} // optional, defaults to 1
-    yAxisSuffix="°C"
+    yAxisSuffix="kw/h"
     withDots={false}
     chartConfig={{
       backgroundColor: "#333134",

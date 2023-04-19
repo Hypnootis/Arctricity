@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { Theme } from "./MyTheme";
-import { HomeScreen, TempsScreen, EnergyScreen, SettingsScreen, ForecastScreen } from "./HomeScreen";
+import { HomeScreen, TempsScreen, EnergyScreen, AboutScreen, ForecastScreen } from "./HomeScreen";
 import { NavBar } from "./Nav";
 
 const Stack = createStackNavigator();
@@ -19,7 +19,7 @@ export const Main = () => {
                     header: (props) => <NavBar {...props}/>
                 }}>
                 <Stack.Screen name="Home" component={HomeScreen}/>
-                <Stack.Screen name="Settings" component={SettingsScreen}/>
+                <Stack.Screen name="About" component={AboutScreen}/>
                 <Stack.Screen name="Forecast" component={ForecastScreen} />
                 <Stack.Screen name="Temps" component={TempsScreen} />
                 <Stack.Screen name="Energy" component={EnergyScreen} />
