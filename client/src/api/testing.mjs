@@ -1,3 +1,3 @@
-import { queryDatabase } from "./getFromDatabase.js";
+import { queryDatabase } from "./getFromDatabase.mjs";
 
-console.log(queryDatabase(1, 19, 18, 58));
+console.log(await queryDatabase(1, 19, 18, 58));
