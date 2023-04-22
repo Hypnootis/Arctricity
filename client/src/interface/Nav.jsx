@@ -1,5 +1,8 @@
 import { Appbar, Menu } from "react-native-paper";
+import { Image, ImageBackground } from "react-native";
 import React from "react";
+
+import { styling } from "./MyTheme"
 
 export const NavBar = ({navigation, back}) => {
     const [visible, setVisible] = React.useState(false);
@@ -9,9 +12,20 @@ export const NavBar = ({navigation, back}) => {
 
     
     return (
+        <ImageBackground
+            source={require("../../assets/star-background.jpg")}
+            style={{width: "100%", opacity: 1}}>
         <Appbar.Header>
             {back ? <Appbar.BackAction onPress={navigation.goBack}/> : null}
-            <Appbar.Content title="Arctricity DEMO" />
+            <Appbar.Content title={
+                <Image source={require("../../assets/arctricity-logo.png")}
+                    style={styling.appbar_image}
+                />
+            }
+            style={{
+                alignItems: "center"
+            }}
+            />
             {!back ? (
                 <Menu
                     visible={visible}
@@ -24,6 +38,7 @@ export const NavBar = ({navigation, back}) => {
             ) : null}
             
         </Appbar.Header>
+        </ImageBackground>
     );
 };
 

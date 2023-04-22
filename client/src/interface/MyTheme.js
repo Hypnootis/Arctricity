@@ -43,5 +43,9 @@ export const styling = {
         backgroundColor: "gray",
         marginTop: 3,
         padding: 2
+    },
+    appbar_image: {
+        width: "80%",
+        height: "50%"
     }
 }

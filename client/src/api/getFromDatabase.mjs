@@ -39,11 +39,47 @@ async function queryDatabase(month, day, hour, minute) {
     // The magic char here matches all characters that come after it
     // Necessary since we can't really predict the seconds in the doc ID
 
+    let docs;
+
     const doc = await query.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            return doc;
+            docs = doc.data();
         });
     });
+
+    return docs;
 }
 
-export { queryDatabase };
+async function getLatestN(amount) {
+    const query = db.collection("Data")
+    .orderBy("timestamp", "desc")
+    .limit(amount);
+
+    let docs = [];
+
+    await query.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            docs.push(doc.data());
+        });
+    });
+
+    return docs;
+}
+
+/*
+async function getHistorical(amount) {
+    let docs = [];
+    const query = db.collection("data_history")
+    .orderBy("timestamp", "desc")
+    .limit(amount);
+
+    await query.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            docs.push(doc.data());
+        });
+    });
+
+    return docs;
+}
+*/
+export { queryDatabase, getLatestN };
