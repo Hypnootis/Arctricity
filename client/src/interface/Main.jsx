@@ -1,12 +1,10 @@
-import { View, Text, StyleSheet, Settings } from "react-native";
 import "react-native-gesture-handler";
 import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { Theme } from "./MyTheme";
-import { HomeScreen, TempsScreen, EnergyScreen, AboutScreen, ForecastScreen } from "./HomeScreen";
-import { NavBar } from "./Nav";
+import { HomeScreen, TempsScreen, EnergyScreen, AboutScreen, ForecastScreen, SettingsScreen, NavBar } from "./Nav";
 
 const Stack = createStackNavigator();
 
@@ -23,6 +21,7 @@ export const Main = () => {
                 <Stack.Screen name="Forecast" component={ForecastScreen} />
                 <Stack.Screen name="Temps" component={TempsScreen} />
                 <Stack.Screen name="Energy" component={EnergyScreen} />
+                <Stack.Screen name="Settings" component={SettingsScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );

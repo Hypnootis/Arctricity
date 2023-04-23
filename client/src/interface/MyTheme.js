@@ -12,7 +12,8 @@ export const styling = {
         height: "100%", 
         width: "90%",
         alignItems: "center",
-        justifyContent: "space-evenly"
+        justifyContent: "space-evenly",
+        backgroundColor: "transparent"
     },
     cards: {
         alignItems: "center",
@@ -45,7 +46,7 @@ export const styling = {
         padding: 2
     },
     appbar_image: {
-        width: "80%",
-        height: "50%"
+        width: "100%",
+        height: "55%"
     }
 }
