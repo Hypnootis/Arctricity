@@ -15,7 +15,7 @@ const background = require("../../assets/star-background.jpg");
 
 
 
-export const NavBar = ({ navigation, back, route, timeState }) => {
+export const NavBar = ({ navigation, back, route }) => {
     const [visible, setVisible] = useState(false);
     const openMenu = () => setVisible(true);
     const closeMenu = () => setVisible(false);
@@ -27,7 +27,7 @@ export const NavBar = ({ navigation, back, route, timeState }) => {
             dark={true}
             mode="center-aligned"
             style={{ backgroundColor: "transparent" }}>
-            {back ? <Appbar.BackAction onPress={() => {navigation.navigate("Home", {timeState: timeState});}}/> : null}
+            {back ? <Appbar.BackAction onPress={() => {navigation.navigate("Home", {timeState: currentState});}}/> : null}
             <Appbar.Content title={
                 <Image source={require("../../assets/arctricity-logo.png")}
                     style={styling.appbar_image}
@@ -44,18 +44,18 @@ export const NavBar = ({ navigation, back, route, timeState }) => {
                     anchor={
                         <Appbar.Action icon="menu" color="white" onPress={openMenu} />
                     }>
-                        <Menu.Item onPress={() => {navigation.navigate("Temps", {timeState: timeState});}} 
+                        <Menu.Item onPress={() => {navigation.navigate("Temps", {timeState: currentState});}} 
                         title="Temperatures" />
                         <Menu.Item onPress={() => {navigation.navigate("Energy");}} 
                         title="Energy" />
                         <Menu.Item onPress={() => {navigation.navigate("Forecast");}} 
                         title="Forecast" />
-                        <Menu.Item onPress={() => {navigation.navigate("Settings", {timeState: timeState});}} 
+                        <Menu.Item onPress={() => {navigation.navigate("Settings", {timeState: currentState});}} 
                         title="Settings" />
                         <Menu.Item onPress={() => {navigation.navigate("About");}} 
                         title="About" />
                         <Menu.Item 
-                        title={timeState}
+                        title={currentState}
                         />
                     </Menu>
             ) : null}

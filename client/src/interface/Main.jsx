@@ -21,7 +21,7 @@ export const Main = () => {
             <Stack.Navigator 
                 initialRouteName="Home"
                 screenOptions={{
-                    header: ({navigation, back, route, timeState}) => <NavBar navigation={navigation} back={back} route={route} timeState={timeStates.RealTime}/>
+                    header: ({navigation, back, route, timeState}) => <NavBar timeState={timeState} navigation={navigation} back={back} route={route}/>
                 }}>
                 <Stack.Screen name="Home" component={Home}/>
                 <Stack.Screen name="About" component={About}/>
