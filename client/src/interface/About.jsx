@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 
-import { styling } from "./MyTheme";
+import { styling } from "../styles/AboutStyle";
 
 const aboutText = `
     This project has been developed with love by Tuomas Pasanen, Tom Cordruwisch, Janne Vänskä and Houda Banyny
@@ -23,9 +23,9 @@ export const About = () => {
         <View style={styling.container}>
             <Image 
                 source={require("../../assets/logo.jpeg")}
-                style={{width: "80%", height: "40%"}}
+                style={{width: "80%", height: "40%", alignSelf: "center", borderRadius: 1000, borderWidth: 2, borderColor: "black"}}
             />
-            <Text style={{color: "white"}}>{aboutText}</Text>
+            <Text style={styling.aboutText}>{aboutText}</Text>
         </View>
     );
 };

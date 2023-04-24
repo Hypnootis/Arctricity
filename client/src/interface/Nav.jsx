@@ -1,22 +1,24 @@
 import { Appbar, Menu } from "react-native-paper";
 import { Image, ImageBackground, View } from "react-native";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 
-import { styling } from "./MyTheme"
+import { styling } from "../styles/MyTheme"
 import { About } from "./About";
 import { Home } from "./Home";
 import { Temps } from "./Temps";
 import { Energy } from "./Energy";
 import { Forecast } from "./Forecast";
-import { Settings } from "./Settings";
+import { timeStates } from "../api/states.mjs";
+// import { Settings } from "./Settings";
 
 const background = require("../../assets/star-background.jpg");
 
-export const NavBar = ({ navigation, back }) => {
+
+
+export const NavBar = ({ navigation, back, route, timeState }) => {
     const [visible, setVisible] = useState(false);
     const openMenu = () => setVisible(true);
     const closeMenu = () => setVisible(false);
-    const timeStates = "Spring";
 
     return (
         <ImageBackground
@@ -25,7 +27,7 @@ export const NavBar = ({ navigation, back }) => {
             dark={true}
             mode="center-aligned"
             style={{ backgroundColor: "transparent" }}>
-            {back ? <Appbar.BackAction onPress={() => navigation.navigate("Home")}/> : null}
+            {back ? <Appbar.BackAction onPress={() => {navigation.navigate("Home", {timeState: timeState});}}/> : null}
             <Appbar.Content title={
                 <Image source={require("../../assets/arctricity-logo.png")}
                     style={styling.appbar_image}
@@ -42,16 +44,19 @@ export const NavBar = ({ navigation, back }) => {
                     anchor={
                         <Appbar.Action icon="menu" color="white" onPress={openMenu} />
                     }>
-                        <Menu.Item onPress={() => {navigation.navigate("Temps");}} 
+                        <Menu.Item onPress={() => {navigation.navigate("Temps", {timeState: timeState});}} 
                         title="Temperatures" />
                         <Menu.Item onPress={() => {navigation.navigate("Energy");}} 
                         title="Energy" />
                         <Menu.Item onPress={() => {navigation.navigate("Forecast");}} 
                         title="Forecast" />
-                        <Menu.Item onPress={() => {navigation.navigate("Settings");}} 
+                        <Menu.Item onPress={() => {navigation.navigate("Settings", {timeState: timeState});}} 
                         title="Settings" />
                         <Menu.Item onPress={() => {navigation.navigate("About");}} 
                         title="About" />
+                        <Menu.Item 
+                        title={timeState}
+                        />
                     </Menu>
             ) : null}
             
@@ -59,72 +64,3 @@ export const NavBar = ({ navigation, back }) => {
         </ImageBackground>
     );
 };
-
-
-export const EnergyScreen = ({ route }) => {
-    return (
-        <ImageBackground
-        source={background}>
-        <View style={styling.cards}>
-            <Energy />
-        </View>
-        </ImageBackground>
-    );
-}
-
-export const TempsScreen = ({ route }) => {
-    return (
-        <ImageBackground
-        source={background}>
-        <View style={styling.cards}>
-            <Temps />
-        </View>
-        </ImageBackground>
-    );
-}
-
-export const ForecastScreen = ({ route }) => {
-    return (
-        <ImageBackground
-        source={background}>
-        <View style={styling.container}>
-            <Forecast />
-        </View>
-        </ImageBackground>
-    );
-}
-export const SettingsScreen = ({ route }) => {
-    return (
-        <ImageBackground
-        source={background}>
-        <View style={styling.container}>
-            <Settings />
-        </View>
-        </ImageBackground>
-    )
-}
-
-export const HomeScreen = ({ route }) => {
-    return (
-        <ImageBackground
-        source={background}>
-    <View style={styling.container}>
-        <Home  />
-    </View>
-    </ImageBackground>
-    )
-}
-
-export const AboutScreen = () => {
-    return (
-        <ImageBackground
-        source={background}>
-        <View style={styling.container}>
-            <About />
-        </View>
-        </ImageBackground>
-    )
-}
-
-
-

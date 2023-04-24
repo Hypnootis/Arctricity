@@ -1,11 +1,12 @@
-import { React } from "react";
-import {View, Text } from "react-native";
+import { React, useEffect } from "react";
+import {View, Text, ImageBackground } from "react-native";
 import { Divider } from "react-native-paper";
 
-import { styling } from "./MyTheme";
+import { styling } from "../styles/MyTheme";
+import { timeStates } from "../api/states.mjs";
 
 
-export const Home = ( props ) => {
+export const Home = ( { navigation, route } ) => {
 
     const ahi = 87;
     const energy = 12;
@@ -13,7 +14,18 @@ export const Home = ( props ) => {
     const time = "5:00 AM";
     const averageElectricity = 10.1;
 
+
+    let currentState = timeStates.RealTime;
+    useEffect(() => {
+        if (route.params?.timeState) {
+            currentState = route.params?.timeState;
+        }
+    }, [route.params?.timeState]);
+
     return (
+        <ImageBackground
+        source={require("../../assets/star-background.jpg")}
+        >
         <View style={styling.container}>
             <Text style={styling.customerText}>Welcome back,
             %Customer%
@@ -40,6 +52,8 @@ export const Home = ( props ) => {
                 <Divider style={{margin: "4%"}} />
                 <Text style={styling.statusText}>Electricity is {averageElectricity}% cheaper than average</Text>
             </View> 
+            <Text>{JSON.stringify(route.params)}</Text>
         </View>
+        </ImageBackground>
     );
 }

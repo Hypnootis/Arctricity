@@ -3,8 +3,15 @@ import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { Theme } from "./MyTheme";
-import { HomeScreen, TempsScreen, EnergyScreen, AboutScreen, ForecastScreen, SettingsScreen, NavBar } from "./Nav";
+import { Theme } from "../styles/MyTheme";
+import { NavBar } from "./Nav";
+import { Settings } from "./Settings";
+import { timeStates } from "../api/states.mjs";
+import { Home } from "./Home";
+import { Temps } from "./Temps";
+import { Energy } from "./Energy";
+import { About } from "./About";
+import { Forecast } from "./Forecast";
 
 const Stack = createStackNavigator();
 
@@ -14,14 +21,14 @@ export const Main = () => {
             <Stack.Navigator 
                 initialRouteName="Home"
                 screenOptions={{
-                    header: (props) => <NavBar {...props}/>
+                    header: ({navigation, back, route, timeState}) => <NavBar navigation={navigation} back={back} route={route} timeState={timeStates.RealTime}/>
                 }}>
-                <Stack.Screen name="Home" component={HomeScreen}/>
-                <Stack.Screen name="About" component={AboutScreen}/>
-                <Stack.Screen name="Forecast" component={ForecastScreen} />
-                <Stack.Screen name="Temps" component={TempsScreen} />
-                <Stack.Screen name="Energy" component={EnergyScreen} />
-                <Stack.Screen name="Settings" component={SettingsScreen} />
+                <Stack.Screen name="Home" component={Home}/>
+                <Stack.Screen name="About" component={About}/>
+                <Stack.Screen name="Forecast" component={Forecast} />
+                <Stack.Screen name="Temps" component={Temps} />
+                <Stack.Screen name="Energy" component={Energy} />
+                <Stack.Screen name="Settings" component={Settings} />
             </Stack.Navigator>
         </NavigationContainer>
     );

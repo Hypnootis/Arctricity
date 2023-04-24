@@ -86,5 +86,5 @@ export const styling = {
         alignSelf: "center",
         marginBottom: "10%",
         textAlign: "center"
-    }
+    },
 }

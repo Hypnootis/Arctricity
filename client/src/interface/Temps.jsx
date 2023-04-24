@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, SegmentedButtons, Divider } from "react-native-paper";
 import { View, Text, Dimensions, ScrollView } from "react-native";
-import { styling } from "./MyTheme";
+import { styling } from "../styles/MyTheme";
 import { LineChart } from "react-native-chart-kit";
 
 const spring = require('../data_files/apr16.json');
@@ -30,13 +30,13 @@ let currentHours = [...hours.filter((value, index) => {
   return (index % 3 === 0);
 })];
 
-export const Temps = (props) => {
+export const Temps = ({navigation, timeState}) => {
     let temps_out = [];
     let watertank_lower = [];
     let date = "";
     let interval = 3;
 
-    if (props.timeState === "Spring") {
+    if (timeState === "Spring") {
       temps_out = [...spring_out_temps];
       watertank_lower = [...spring_watertank_lower];
       date = "April 16th 2023";
@@ -69,6 +69,7 @@ export const Temps = (props) => {
         <View>
             <ScrollView>
             <Text style={{ color: 'white', fontSize: 20, textAlign: 'center' }}>Viewing historical data from:{'\n' + date}</Text>
+            <Text>{timeState}</Text>
             <Divider bold={true}/>
             <Text style={{color: "white", fontSize: 15, textAlign: "center"}}>Time interval</Text>
             <SegmentedButtons 

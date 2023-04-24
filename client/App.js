@@ -1,7 +1,7 @@
 import { Provider as PaperProvider } from 'react-native-paper';
 
 import { Main } from "./src/interface/Main";
-import { Theme } from './src/interface/MyTheme';
+import { Theme } from './src/styles/MyTheme';
 
 const App = () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, SegmentedButtons, Divider } from "react-native-paper";
 import { View, Text, Dimensions, ScrollView } from "react-native";
-import { styling } from "./MyTheme";
+import { styling } from "../styles/MyTheme";
 import { LineChart } from "react-native-chart-kit";
 
 const spring = require('../data_files/apr16.json');
