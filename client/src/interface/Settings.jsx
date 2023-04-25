@@ -1,16 +1,16 @@
 import { View } from "react-native";
 import { Text, Divider } from "react-native-paper";
 import { Switch } from "react-native";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 import { styling } from "../styles/SettingsStyle";
 import { timeStates } from "../api/states.mjs";
-import { NavBar } from "./Nav";
+import { TimeContext } from "../api/TimeContext.mjs";
 
 export const Settings = ( {navigation, route, options} ) => {
   const [isSwitch1On, setIsSwitch1On] = useState(true);
   const [isSwitch2On, setIsSwitch2On] = useState(false);
-const [currentState, setCurrentState] = useState(route.params?.timeState);
+  const { currentState, setCurrentState } = useContext(TimeContext);
 
     const handleCurrentState = () => {
         if (currentState === timeStates.RealTime) {
@@ -19,13 +19,6 @@ const [currentState, setCurrentState] = useState(route.params?.timeState);
             setCurrentState(timeStates.RealTime);
         }
     };
-
-    useEffect(() => {
-        navigation.setOptions({
-            header: ({navigation, back, route, timeState}) => <NavBar navigation={navigation} back={back} route={route} timeState={currentState}/>
-        });
-    }, [currentState]);
-
 
   const onToggleSwitch1 = () => {
     setIsSwitch1On(!isSwitch1On);

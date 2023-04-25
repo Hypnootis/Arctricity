@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import React from "react";
+import React, { createContext, useState } from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -12,16 +12,22 @@ import { Temps } from "./Temps";
 import { Energy } from "./Energy";
 import { About } from "./About";
 import { Forecast } from "./Forecast";
+import { TimeContext } from "../api/TimeContext.mjs";
 
 const Stack = createStackNavigator();
 
 export const Main = () => {
+    
+    const [currentState, setCurrentState] = useState(timeStates.RealTime);
+    const value = { currentState, setCurrentState };
+
     return (
+        <TimeContext.Provider value={value}>
         <NavigationContainer theme={Theme}>
             <Stack.Navigator 
                 initialRouteName="Home"
                 screenOptions={{
-                    header: ({navigation, back, route, timeState}) => <NavBar timeState={timeState} navigation={navigation} back={back} route={route}/>
+                    header: (props) => <NavBar {...props}/>
                 }}>
                 <Stack.Screen name="Home" component={Home}/>
                 <Stack.Screen name="About" component={About}/>
@@ -31,5 +37,6 @@ export const Main = () => {
                 <Stack.Screen name="Settings" component={Settings} />
             </Stack.Navigator>
         </NavigationContainer>
+    </TimeContext.Provider>
     );
 };

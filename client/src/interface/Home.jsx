@@ -1,10 +1,10 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useContext } from "react";
 import {View, Text, ImageBackground } from "react-native";
 import { Divider } from "react-native-paper";
 
 import { styling } from "../styles/MyTheme";
 import { timeStates } from "../api/states.mjs";
-
+import { TimeContext } from "../api/TimeContext.mjs";
 
 export const Home = ( { navigation, route } ) => {
 
@@ -13,6 +13,8 @@ export const Home = ( { navigation, route } ) => {
     const temp = 3.2;
     const time = "5:00 AM";
     const averageElectricity = 10.1;
+
+    let myContext = useContext(TimeContext);
 
 
     let currentState = timeStates.RealTime;
@@ -52,7 +54,7 @@ export const Home = ( { navigation, route } ) => {
                 <Divider style={{margin: "4%"}} />
                 <Text style={styling.statusText}>Electricity is {averageElectricity}% cheaper than average</Text>
             </View> 
-            <Text>{JSON.stringify(route.params)}</Text>
+            <Text>{JSON.stringify(myContext)}</Text>
         </View>
         </ImageBackground>
     );

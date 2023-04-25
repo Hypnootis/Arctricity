@@ -20,6 +20,8 @@ export const NavBar = ({ navigation, back, route }) => {
     const openMenu = () => setVisible(true);
     const closeMenu = () => setVisible(false);
 
+    let currentState = timeStates.RealTime;
+
     return (
         <ImageBackground
             source={background}>
@@ -27,7 +29,7 @@ export const NavBar = ({ navigation, back, route }) => {
             dark={true}
             mode="center-aligned"
             style={{ backgroundColor: "transparent" }}>
-            {back ? <Appbar.BackAction onPress={() => {navigation.navigate("Home", {timeState: currentState});}}/> : null}
+            {back ? <Appbar.BackAction onPress={() => {navigation.navigate("Home");}}/> : null}
             <Appbar.Content title={
                 <Image source={require("../../assets/arctricity-logo.png")}
                     style={styling.appbar_image}
@@ -44,13 +46,13 @@ export const NavBar = ({ navigation, back, route }) => {
                     anchor={
                         <Appbar.Action icon="menu" color="white" onPress={openMenu} />
                     }>
-                        <Menu.Item onPress={() => {navigation.navigate("Temps", {timeState: currentState});}} 
+                        <Menu.Item onPress={() => {navigation.navigate("Temps");}} 
                         title="Temperatures" />
                         <Menu.Item onPress={() => {navigation.navigate("Energy");}} 
                         title="Energy" />
                         <Menu.Item onPress={() => {navigation.navigate("Forecast");}} 
                         title="Forecast" />
-                        <Menu.Item onPress={() => {navigation.navigate("Settings", {timeState: currentState});}} 
+                        <Menu.Item onPress={() => {navigation.navigate("Settings");}} 
                         title="Settings" />
                         <Menu.Item onPress={() => {navigation.navigate("About");}} 
                         title="About" />
