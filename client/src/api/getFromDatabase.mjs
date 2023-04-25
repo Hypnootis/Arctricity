@@ -66,7 +66,6 @@ async function getLatestN(amount) {
     return docs;
 }
 
-/*
 async function getHistorical(amount) {
     let docs = [];
     const query = db.collection("data_history")
@@ -81,5 +80,4 @@ async function getHistorical(amount) {
 
     return docs;
 }
-*/
-export { queryDatabase, getLatestN };
+export { queryDatabase, getLatestN, getHistorical };

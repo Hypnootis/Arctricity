@@ -8,9 +8,9 @@ import { timeStates } from "../api/states.mjs";
 import { TimeContext } from "../api/TimeContext.mjs";
 
 export const Settings = ( {navigation, route, options} ) => {
-  const [isSwitch1On, setIsSwitch1On] = useState(true);
   const [isSwitch2On, setIsSwitch2On] = useState(false);
   const { currentState, setCurrentState } = useContext(TimeContext);
+  const [isSwitch1On, setIsSwitch1On] = useState(currentState === timeStates.RealTime ? true : false);
 
     const handleCurrentState = () => {
         if (currentState === timeStates.RealTime) {

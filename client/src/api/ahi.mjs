@@ -34,4 +34,55 @@ function getColorFromAHI() {
       }
 }
 
-export { getVPositionFromAHI, getColorFromAHI };
+function countConsecutiveOnValues(documents, field) {
+  let count = 0;
+  for (let i = 0; i < documents.length; i++) {
+    let data = documents[i];
+    if (data[field] == " 1") {
+      count++;
+    } else {
+      break;
+    }
+  }
+}
+
+function calculateRate(documents, time, temp_delta, field) {
+  return temp_delta / time;
+}
+
+async function fetchApiData(url) {
+  let response;
+  await fetch(url)
+  .then(response => response.json())
+  .then((json) => response = json);
+  return response;
+}
+
+function giveDateTime(input) {
+  return new Date(input);
+}
+
+function convertToInt(docs, i, field) {
+  const error = 999;
+  const stringData = docs[i];
+  stringValue = stringData[field];
+  intValue = parseInt(stringValue);
+  if (intValue) {
+    return intValue;
+  }
+  return error;
+}
+
+function getField(docs, i, field) {
+  const stringData = docs[i];
+  const stringValue = stringData[field];
+  if (number) {
+    return number;
+  } else {
+    return "error";
+  }
+
+}
+
+export { getVPositionFromAHI, getColorFromAHI, countConsecutiveOnValues,
+         calculateRate, giveDateTime, convertToInt, fetchApiData, getField  };

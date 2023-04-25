@@ -1,4 +1,4 @@
-import { React, useEffect, useContext } from "react";
+import { React, useContext } from "react";
 import {View, Text, ImageBackground } from "react-native";
 import { Divider } from "react-native-paper";
 
@@ -8,21 +8,28 @@ import { TimeContext } from "../api/TimeContext.mjs";
 
 export const Home = ( { navigation, route } ) => {
 
-    const ahi = 87;
-    const energy = 12;
-    const temp = 3.2;
-    const time = "5:00 AM";
-    const averageElectricity = 10.1;
-
-    let myContext = useContext(TimeContext);
+    const {currentState, setCurrentState} = useContext(TimeContext);
 
 
-    let currentState = timeStates.RealTime;
-    useEffect(() => {
-        if (route.params?.timeState) {
-            currentState = route.params?.timeState;
-        }
-    }, [route.params?.timeState]);
+    let ahi = 87;
+    let energy = 12;
+    let temp = 3.2;
+    let time = "5:00 AM";
+    let averageElectricity = 10.1;
+
+    if (currentState === timeStates.RealTime) {
+        ahi = Math.floor(Math.random() * (40 - 10 + 1) + 10);
+        energy = Math.floor(Math.random() * (28 - 3 + 1) + 3);
+        temp = Math.floor(Math.random() * (10 - 0 + 1) + 0);
+        time = "7:00 AM";
+        averageElectricity = Math.floor(Math.random() * (24 - 3 + 1) + 3);
+    } else {
+        ahi = Math.floor(Math.random() * (93 - 53 + 1) + 53);
+        energy = Math.floor(Math.random() * (63 - 18 + 1) + 18);
+        temp = -24;
+        time = "5:00 AM";
+        averageElectricity = Math.floor(Math.random() * (24 - 3 + 1) + 3);
+    }
 
     return (
         <ImageBackground
@@ -54,7 +61,6 @@ export const Home = ( { navigation, route } ) => {
                 <Divider style={{margin: "4%"}} />
                 <Text style={styling.statusText}>Electricity is {averageElectricity}% cheaper than average</Text>
             </View> 
-            <Text>{JSON.stringify(myContext)}</Text>
         </View>
         </ImageBackground>
     );

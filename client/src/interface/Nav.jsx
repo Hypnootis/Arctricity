@@ -1,15 +1,8 @@
 import { Appbar, Menu } from "react-native-paper";
-import { Image, ImageBackground, View } from "react-native";
-import { React, useState, useEffect } from "react";
+import { Image, ImageBackground } from "react-native";
+import { React, useState } from "react";
 
 import { styling } from "../styles/MyTheme"
-import { About } from "./About";
-import { Home } from "./Home";
-import { Temps } from "./Temps";
-import { Energy } from "./Energy";
-import { Forecast } from "./Forecast";
-import { timeStates } from "../api/states.mjs";
-// import { Settings } from "./Settings";
 
 const background = require("../../assets/star-background.jpg");
 
@@ -19,8 +12,6 @@ export const NavBar = ({ navigation, back, route }) => {
     const [visible, setVisible] = useState(false);
     const openMenu = () => setVisible(true);
     const closeMenu = () => setVisible(false);
-
-    let currentState = timeStates.RealTime;
 
     return (
         <ImageBackground
@@ -56,9 +47,6 @@ export const NavBar = ({ navigation, back, route }) => {
                         title="Settings" />
                         <Menu.Item onPress={() => {navigation.navigate("About");}} 
                         title="About" />
-                        <Menu.Item 
-                        title={currentState}
-                        />
                     </Menu>
             ) : null}
             
