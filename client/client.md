@@ -13,7 +13,11 @@ Then run expo:
 npx expo start
 ```
 
-If you want to export the app to APK, run:
+If you want to export the app to APK, first make sure you have eas-cli installed:
+```bash
+npm install -g eas-cli
+```
+Make an account at [eas.dev](https://expo.dev/eas), then run:
 ```bash
 eas build -p android --profile preview
 ```
