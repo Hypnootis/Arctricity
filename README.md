@@ -3,5 +3,7 @@ Collected code efforts for the Arctricity -school project, an app made to displa
 
 The project consists of a mobile app made with React Native and several self-written APIs
 
+Cloud services such as Firestore are also utilized
+
 ## Documentation
 ### [Client](client/client.md)
